@@ -5,7 +5,7 @@ class RiscvPk < Formula
   url "https://github.com/ucb-bar/riscv-pk.git"
   sha1 ""
 
-  # disable superenv to use brew installed gcc48
+  # disable superenv to use brew installed riscv-gcc
   env :std
 
   depends_on "riscv-gcc"
@@ -19,7 +19,7 @@ class RiscvPk < Formula
     system "mkdir", "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}", "--host=riscv"
-      system "make", "install" # if this fails, try separate make/make install steps
+      system "make", "install"
     end
   end
 

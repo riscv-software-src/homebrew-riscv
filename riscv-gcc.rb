@@ -9,7 +9,7 @@ class RiscvGcc < Formula
   env :std
 
   depends_on "gawk"
-  depends_on "gcc48"
+  depends_on "homebrew/versions/gcc48"
 
   def install
     # using gcc48 from std env
@@ -21,7 +21,7 @@ class RiscvGcc < Formula
     system "mkdir", "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
-      system "make" # if this fails, try separate make/make install steps
+      system "make"
     end
   end
 

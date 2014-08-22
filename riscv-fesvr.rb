@@ -8,7 +8,7 @@ class RiscvFesvr < Formula
   # disable superenv to use brew installed gcc48
   env :std
 
-  depends_on "gcc48"
+  depends_on "homebrew/versions/gcc48"
 
   def install
     # using gcc48 from std env
@@ -18,14 +18,12 @@ class RiscvFesvr < Formula
     ENV.delete 'CXXFLAGS'
     ENV['CC'] = "gcc-4.8"
     ENV['CXX'] = "g++-4.8"
-    # ENV['CFLAGS'] = "-DTARGET_ARCH"
 
     system "mkdir", "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
-      # system "fdgfdfd"
       system "make", "prefix=#{HOMEBREW_PREFIX}", "CFLAGS=-DTARGET_ARCH=\"\""
-      system "make", "install" # if this fails, try separate make/make installsteps
+      system "make", "install"
     end
   end
 

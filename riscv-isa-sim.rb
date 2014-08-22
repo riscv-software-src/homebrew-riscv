@@ -8,7 +8,7 @@ class RiscvIsaSim < Formula
   # disable superenv to use brew installed gcc48
   env :std
 
-  depends_on "gcc48"
+  depends_on "homebrew/versions/gcc48"
   depends_on "riscv-fesvr"
 
   def install
@@ -21,7 +21,7 @@ class RiscvIsaSim < Formula
     system "mkdir", "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
-      system "make", "install" # if this fails, try separate make/make install steps
+      system "make", "install"
     end
   end
 
