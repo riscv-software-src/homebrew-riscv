@@ -14,7 +14,9 @@ class RiscvGcc < Formula
   def install
     # using gcc48 from std env
     ENV.delete 'CFLAGS'
-    ENV['CC'] = "riscv-gcc"
+    ENV.delete 'CXXFLAGS'
+    ENV['CC'] = "gcc-4.8"
+    ENV['CXX'] = "g++-4.8"
 
     system "mkdir", "build"
     cd "build" do
