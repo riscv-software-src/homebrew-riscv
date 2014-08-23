@@ -1,9 +1,8 @@
 require "formula"
 
 class RiscvPk < Formula
-  homepage "riscv.org"
+  homepage "http://riscv.org"
   url "https://github.com/ucb-bar/riscv-pk.git"
-  sha1 ""
 
   # disable superenv to use brew installed riscv-gcc
   env :std

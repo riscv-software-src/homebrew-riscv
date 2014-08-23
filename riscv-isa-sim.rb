@@ -1,9 +1,8 @@
 require "formula"
 
 class RiscvIsaSim < Formula
-  homepage "riscv.org"
+  homepage "http://riscv.org"
   url "https://github.com/ucb-bar/riscv-isa-sim.git"
-  sha1 ""
 
   # disable superenv to use brew installed gcc48
   env :std
