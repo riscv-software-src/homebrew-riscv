@@ -1,8 +1,8 @@
 require "formula"
 
 class RiscvTools < Formula
-  homepage "riscv.org"
-  url "https://github.com/ucb-bar/riscv-tools/archive/master.zip"
+  homepage "http://riscv.org"
+  url "https://github.com/ucb-bar/riscv-tools/archive/master.tar.gz"
   version "0.1"
 
   # install rest of tools
