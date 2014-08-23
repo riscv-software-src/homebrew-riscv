@@ -3,6 +3,7 @@ require "formula"
 class RiscvTools < Formula
   homepage "http://riscv.org"
   url "https://github.com/ucb-bar/riscv-tools/archive/master.tar.gz"
+  sha1 "36ed62664c5fb52d434c78cf851c42aae2d99cd7"
   version "0.1"
 
   # install rest of tools
@@ -10,6 +11,10 @@ class RiscvTools < Formula
   depends_on "riscv-isa-sim"
   depends_on "riscv-gcc"
   depends_on "riscv-pk"
+
+  def install
+    # dummy because done by dependences
+  end
 
   test do
     (testpath/'hello.c').write('#include<stdio.h>
