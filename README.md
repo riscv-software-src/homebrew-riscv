@@ -13,7 +13,7 @@ First, install homebrew:
 
 Get this tap:
 
-    $ brew tap ucb-bar/homebrew-riscv
+    $ brew tap ucb-bar/riscv
 
 Build the toolchain:
 
