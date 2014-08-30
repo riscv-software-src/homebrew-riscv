@@ -12,10 +12,10 @@ class RiscvFesvr < Formula
 
   depends_on "homebrew/versions/gcc48" => :build
 
-  def install
-    # disable superenv to use brew installed gcc48
-    env :std
+  # disable superenv to use brew installed gcc48
+  env :std
 
+  def install
     # using gcc48 from std env
     ENV.delete 'CFLAGS'
     ENV.delete 'LDFLAGS'

@@ -12,10 +12,10 @@ class RiscvPk < Formula
 
   depends_on "riscv-gcc" => :build
 
-  def install
-    # disable superenv to use brew installed riscv-gcc
-    env :std
+  # disable superenv to use brew installed riscv-gcc
+  env :std
 
+  def install
     # using riscv-gcc from std env
     ENV.delete 'CFLAGS'
     ENV.delete 'LDFLAGS'
