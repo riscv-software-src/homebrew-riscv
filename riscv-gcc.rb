@@ -4,13 +4,19 @@ class RiscvGcc < Formula
   homepage "http://riscv.org"
   url "https://github.com/ucb-bar/riscv-gcc.git"
 
-  # disable superenv to use brew installed gcc48
-  env :std
+  bottle do
+    root_url 'http://riscv.org/bottles'
+    cellar :any
+    sha1 "f03220f649daa03a8af80549bf4f1dee431a4e32" => :mavericks
+  end
 
-  depends_on "gawk"
-  depends_on "homebrew/versions/gcc48"
+  depends_on "gawk" => :build
+  depends_on "homebrew/versions/gcc48" => :build
 
   def install
+    # disable superenv to use brew installed gcc48
+    env :std
+
     # using gcc48 from std env
     ENV.delete 'CFLAGS'
     ENV.delete 'CXXFLAGS'
