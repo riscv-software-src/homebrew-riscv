@@ -5,7 +5,7 @@ class RiscvIsaSim < Formula
   url "https://github.com/ucb-bar/riscv-isa-sim.git"
 
   bottle do
-    root_url 'http://riscv.org/bottles'
+    root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     cellar :any
     sha1 "ff860e553813af73f575ce4705aa4101b91615a7" => :mavericks
   end

@@ -5,7 +5,7 @@ class RiscvPk < Formula
   url "https://github.com/ucb-bar/riscv-pk.git"
 
   bottle do
-    root_url 'http://riscv.org/bottles'
+    root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     cellar :any
     sha1 "3279999f44db854472fa0ff9dffe52105ff44474" => :mavericks
   end

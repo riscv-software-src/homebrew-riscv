@@ -5,7 +5,7 @@ class RiscvFesvr < Formula
   url "https://github.com/ucb-bar/riscv-fesvr.git"
 
   bottle do
-    root_url 'http://riscv.org/bottles'
+    root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     cellar :any
     sha1 "c731e772868d065032f3d441a8ed70e025c47cb7" => :mavericks
   end
