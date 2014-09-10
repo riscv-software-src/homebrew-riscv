@@ -23,11 +23,12 @@ class RiscvFesvr < Formula
     ENV.delete 'CXXFLAGS'
     ENV['CC'] = "gcc-4.8"
     ENV['CXX'] = "g++-4.8"
+    ENV['CXXFLAGS'] = "-DTARGET_ARCH=\"\""
 
     system "mkdir", "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
-      system "make", "prefix=#{HOMEBREW_PREFIX}", "CFLAGS=-DTARGET_ARCH=\"\""
+      system "make", "prefix=#{HOMEBREW_PREFIX}"
       system "make", "install"
     end
   end

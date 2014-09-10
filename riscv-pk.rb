@@ -10,6 +10,7 @@ class RiscvPk < Formula
     sha1 "3279999f44db854472fa0ff9dffe52105ff44474" => :mavericks
   end
 
+  depends_on "riscv-isa-sim" => :build
   depends_on "riscv-gcc" => :build
 
   # disable superenv to use brew installed riscv-gcc
