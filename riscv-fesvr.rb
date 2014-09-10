@@ -5,9 +5,10 @@ class RiscvFesvr < Formula
   url "https://github.com/ucb-bar/riscv-fesvr.git"
 
   bottle do
+    revision 1
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     cellar :any
-    sha1 "c731e772868d065032f3d441a8ed70e025c47cb7" => :mavericks
+    sha1 "f72f692520246f2c706acbf8528197681d33a8d9" => :mavericks
   end
 
   depends_on "homebrew/versions/gcc48" => :build
