@@ -11,9 +11,9 @@ class RiscvGcc < Formula
   end
 
   depends_on "gawk" => :build
-  depends_on "gmp" => :build
-  depends_on "mpfr" => :build
-  depends_on "libmpc" => :build
+  depends_on "gmp"
+  depends_on "mpfr"
+  depends_on "libmpc"
 
   # disable superenv's flags
   env :std
