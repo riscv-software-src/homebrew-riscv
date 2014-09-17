@@ -18,12 +18,12 @@ class RiscvTools < Formula
 
   test do
     hello = "hello"
-    (testpath/'hello.c').write("#include<stdio.h>
- int main() {
-   printf(\"#{hello}\");
-   return 0;
- }")
-    system "#{HOMEBREW_PREFIX}/bin/riscv-gcc", (testpath/'hello.c')
-    assert_equal hello, shell_output("#{HOMEBREW_PREFIX}/bin/spike #{HOMEBREW_PREFIX}/bin/pk #{testpath}/a.out")
+    (testpath/'hello.c').write("#include <stdio.h>
+int main() {
+  printf(\"#{hello}\");
+  return 0;
+}")
+    system "riscv-gcc", (testpath/'hello.c')
+    assert_equal hello, shell_output("spike pk #{testpath}/a.out")
   end
 end
