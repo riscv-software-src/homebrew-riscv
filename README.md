@@ -19,7 +19,9 @@ Build the toolchain:
 
     $ brew install riscv-tools
 
-If you have OS X Mavericks (10.9), `riscv-tools` will be installed from precompiled binaries. If you do not have Mavericks, `riscv-tools` will be built from source by `gcc-4.8`. If you do not have `gcc-4.8`, it will be automatically installed and homebrew will tap `homebrew/versions` to do so.
+If you have OS X Mavericks (10.9), `riscv-tools` will be installed from precompiled binaries. If you do not have Mavericks, `riscv-tools` will be built from source. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
+
+    $ brew install --cc=gcc-4.8 riscv-tools
 
 
 Testing
