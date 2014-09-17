@@ -6,8 +6,8 @@ class RiscvPk < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    cellar :any
-    sha1 "3279999f44db854472fa0ff9dffe52105ff44474" => :mavericks
+    revision 1
+    sha1 "7d5b7c3b7dd7f01f3477a05e1841de16f87b9568" => :mavericks
   end
 
   depends_on "riscv-isa-sim" => :build
