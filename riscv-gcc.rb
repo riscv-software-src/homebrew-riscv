@@ -2,7 +2,7 @@ require "formula"
 
 class RiscvGcc < Formula
   homepage "http://riscv.org"
-  url "https://github.com/ucb-bar/riscv-gcc.git"
+  url "https://github.com/ucb-bar/riscv-gnu-toolchain.git"
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
@@ -11,17 +11,17 @@ class RiscvGcc < Formula
   end
 
   depends_on "gawk" => :build
-  depends_on "homebrew/versions/gcc48" => :build
+  depends_on "gmp" => :build
+  depends_on "mpfr" => :build
+  depends_on "libmpc" => :build
 
-  # disable superenv to use brew installed gcc48
+  # disable superenv's flags
   env :std
 
   def install
-    # using gcc48 from std env
+    # disable crazy flag additions
     ENV.delete 'CFLAGS'
     ENV.delete 'CXXFLAGS'
-    ENV['CC'] = "gcc-4.8"
-    ENV['CXX'] = "g++-4.8"
 
     system "mkdir", "build"
     cd "build" do
