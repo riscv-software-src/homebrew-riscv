@@ -1,4 +1,4 @@
-RISCV Toolchain
+RISC-V Toolchain
 ===============
 
 This provides packages to install the [RISC-V](http://riscv.org) toolchain on OS X using [Homebrew](http://brew.sh).
