@@ -6,8 +6,8 @@ class RiscvFesvr < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    revision 2
-    sha1 "984865a10f790308a94c4a54409f38f5bd9243a6" => :mavericks
+    revision 3
+    sha1 "5abd1f7b22bf1106c956e5480dc2fd2cc605ed71" => :yosemite
   end
 
 

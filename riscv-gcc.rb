@@ -6,8 +6,8 @@ class RiscvGcc < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    revision 1
-    sha1 "78a86189654a96e96a2bc2ef8611ee07dd23c842" => :mavericks
+    revision 2
+    sha1 "a96250e7b16e322537f2c3827bc25d730658eeba" => :yosemite
   end
 
   depends_on "gawk" => :build
