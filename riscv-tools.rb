@@ -23,7 +23,7 @@ int main() {
   printf(\"#{hello}\");
   return 0;
 }")
-    system "riscv-gcc", (testpath/'hello.c')
+    system "riscv64-unknown-elf-gcc", (testpath/'hello.c')
     assert_equal hello, shell_output("spike pk #{testpath}/a.out")
   end
 end

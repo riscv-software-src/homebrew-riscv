@@ -11,6 +11,7 @@ class RiscvGcc < Formula
   end
 
   depends_on "gawk" => :build
+  depends_on "gnu-sed" => :build
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "libmpc"
@@ -27,6 +28,10 @@ class RiscvGcc < Formula
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
       system "make"
+    end
+
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-4.9.2/")
+      system "rm", "-rf", "#{prefix}/share"
     end
   end
 

@@ -20,11 +20,11 @@ class RiscvPk < Formula
     # using riscv-gcc from std env
     ENV.delete 'CFLAGS'
     ENV.delete 'LDFLAGS'
-    ENV['CC'] = "riscv-gcc"
+    ENV['CC'] = "riscv64-unknown-elf-gcc"
 
     system "mkdir", "build"
     cd "build" do
-      system "../configure", "--prefix=#{prefix}", "--host=riscv"
+      system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
       system "make", "install"
     end
   end
