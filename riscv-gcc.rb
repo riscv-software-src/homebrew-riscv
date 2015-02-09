@@ -2,7 +2,7 @@ require "formula"
 
 class RiscvGcc < Formula
   homepage "http://riscv.org"
-  url "https://github.com/ucb-bar/riscv-gnu-toolchain.git"
+  url "https://github.com/riscv/riscv-gnu-toolchain.git"
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'

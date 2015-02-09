@@ -2,7 +2,7 @@ require "formula"
 
 class RiscvIsaSim < Formula
   homepage "http://riscv.org"
-  url "https://github.com/ucb-bar/riscv-isa-sim.git"
+  url "https://github.com/riscv/riscv-isa-sim.git"
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'

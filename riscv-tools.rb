@@ -2,7 +2,7 @@ require "formula"
 
 class RiscvTools < Formula
   homepage "http://riscv.org"
-  url "https://github.com/ucb-bar/riscv-tools/archive/homebrew.tar.gz"
+  url "https://github.com/riscv/riscv-tools/archive/homebrew.tar.gz"
   sha1 "e119bc4a4bf1de5a87aeec5bdfe6179591b53b80"
   version "0.1"
 
