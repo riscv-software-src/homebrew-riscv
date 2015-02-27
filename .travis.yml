@@ -1,2 +1,2 @@
 language: objective-c
-script: brew install ./riscv-fesvr.rb
+script: brew install --cc=gcc-4.8 ./riscv-fesvr.rb
