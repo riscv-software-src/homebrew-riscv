@@ -1,2 +1,2 @@
-language: ruby
+language: objective-c
 script: brew install ./riscv-fesvr.rb
