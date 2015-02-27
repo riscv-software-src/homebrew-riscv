@@ -1,0 +1,2 @@
+language: ruby
+script: brew install ./riscv-fesvr.rb
