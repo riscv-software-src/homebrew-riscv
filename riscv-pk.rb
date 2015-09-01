@@ -6,8 +6,7 @@ class RiscvPk < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    revision 4
-    sha256 "4668401a947237d9572b6457a2a35c8e582ccf4e680ec5092117c8f19230cb1b" => :yosemite
+    sha256 "a5f0b76e52a5f260268717141b9c8fa4fbcdcd4da2ec5eff71b67fb2dea356bc" => :yosemite
   end
 
   depends_on "riscv-isa-sim" => :build

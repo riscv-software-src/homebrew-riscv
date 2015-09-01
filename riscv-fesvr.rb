@@ -6,8 +6,7 @@ class RiscvFesvr < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    revision 5
-    sha256 "315aabf533d8f1abda101b0915d12300ed6c3ca645bdee387bac4a26cd55bd16" => :yosemite
+    sha256 "7fb2e7c6c55e611954e3a6657ebfabf074906ddd7f3210b23f8e078c731180f9" => :yosemite
   end
 
 
