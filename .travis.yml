@@ -6,3 +6,10 @@ script:
   - brew tap riscv/riscv
   - brew install riscv-tools
   - brew test riscv-tools
+  # now rebuild (instead of from pre-built binaries)
+  - brew reinstall --build-from-source riscv-fesvr
+  - brew reinstall --build-from-source riscv-isa-sim
+  - brew reinstall --build-from-source riscv-gcc
+  - brew reinstall --build-from-source riscv-pk
+  - rm -f hello.c a.out
+  - brew test riscv-tools
