@@ -11,6 +11,7 @@ class RiscvGcc < Formula
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
+  depends_on "cloog"
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "libmpc"
