@@ -1,5 +1,5 @@
-RISC-V Toolchain
-===============
+RISC-V Toolchain [![Build Status](https://travis-ci.org/riscv/homebrew-riscv.svg?branch=master)](https://travis-ci.org/riscv/homebrew-riscv)
+================
 
 This provides packages to install the [RISC-V](http://riscv.org) toolchain on OS X using [Homebrew](http://brew.sh).
 
@@ -19,9 +19,9 @@ Build the toolchain:
 
     $ brew install riscv-tools
 
-If you have OS X Yosemite (10.10), `riscv-tools` will be installed from precompiled binaries. If you do not have Mavericks, `riscv-tools` will be built from source. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
+If you have OS X Yosemite (10.10), `riscv-tools` will be installed from precompiled binaries. If you do not have Yosemite, `riscv-tools` will be built from source. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
 
-    $ brew install --cc=gcc-4.9 riscv-tools
+    $ brew install --cc=gcc-5 riscv-tools
 
 
 Testing
@@ -31,7 +31,7 @@ You can verify your install was successful by:
 
     $ brew test riscv-tools
 
-This will compile and run a hello world, so it will use all of the components ([riscv-fesvr](http://github.com/ucb-bar/riscv-fesvr), [riscv-isa-sim](http://github.com/ucb-bar/riscv-isa-sim), [riscv-pk](http://github.com/ucb-bar/riscv-pk), and [riscv-gcc](http://github.com/ucb-bar/riscv-gcc)).
+This will compile and run a hello world, so it will use all of the components ([riscv-fesvr](http://github.com/riscv/riscv-fesvr), [riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gcc](http://github.com/riscv/riscv-gcc)).
 
 
 Updating
