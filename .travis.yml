@@ -2,9 +2,6 @@ language: objective-c
 # should give access to mac osx 10.10.4
 osx_image: xcode7
 
-# avoid timeouts during long gcc build
-install: travis_wait
-
 script:
   - brew tap riscv/riscv
   - brew install riscv-tools
@@ -12,7 +9,8 @@ script:
   # now rebuild (instead of from pre-built binaries)
   - brew reinstall --build-from-source riscv-fesvr
   - brew reinstall --build-from-source riscv-isa-sim
-  - brew reinstall --build-from-source riscv-gcc
+  # avoid timeouts during long gcc build
+  - travis_wait 45 brew reinstall --build-from-source riscv-gcc
   - brew reinstall --build-from-source riscv-pk
   - rm -f hello.c a.out
   - brew test riscv-tools
