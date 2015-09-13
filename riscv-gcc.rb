@@ -9,6 +9,8 @@ class RiscvGcc < Formula
     sha256 "bd580ee568dd37be861a9a8b5b81204b77865d195b82e605ca641508111de7d5" => :yosemite
   end
 
+  option "with-multilib", "Build with multilib support"
+
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
   depends_on "cloog"
@@ -27,7 +29,11 @@ class RiscvGcc < Formula
 
     system "mkdir", "build"
     cd "build" do
-      system "../configure", "--prefix=#{prefix}"
+      if build.with?("multilib")
+        system "../configure", "--prefix=#{prefix}", "--enable-multilib"
+      else
+        system "../configure", "--prefix=#{prefix}"
+      end
       system "make"
     end
 
