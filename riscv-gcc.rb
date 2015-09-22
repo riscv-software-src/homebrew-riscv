@@ -27,13 +27,11 @@ class RiscvGcc < Formula
     ENV.delete 'CXXFLAGS'
     ENV.delete 'LD'
 
+    args = ["--prefix=#{prefix}"]
+    args << "--enable-multilib" if build.with?("multilib")
     system "mkdir", "build"
     cd "build" do
-      if build.with?("multilib")
-        system "../configure", "--prefix=#{prefix}", "--enable-multilib"
-      else
-        system "../configure", "--prefix=#{prefix}"
-      end
+      system "../configure", *args
       system "make"
     end
 
