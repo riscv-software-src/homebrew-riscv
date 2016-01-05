@@ -17,6 +17,7 @@ class RiscvGcc < Formula
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "libmpc"
+  depends_on "isl"
 
   # disable superenv's flags
   env :std
