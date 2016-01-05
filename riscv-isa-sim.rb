@@ -6,7 +6,8 @@ class RiscvIsaSim < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    sha256 "bccafd357e7eb5685dff6c6c0323d09e74069d5ed5059cd65efedd9c041b8a1b" => :yosemite
+    revision 1
+    sha256 "b0de0910405a5c1b18381048ef8b5a146fbfe5ddc3a2fdaafe173b8e3b911214" => :el_capitan
   end
 
   depends_on "riscv-fesvr"
