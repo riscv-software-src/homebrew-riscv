@@ -8,6 +8,7 @@ class RiscvGcc < Formula
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     revision 1
     sha256 "bd8a59f2e8aa0c4773867c24e9900ee10b65ed8e6b98da7d269bf644299b62e4" => :el_capitan
+  end
 
   option "with-multilib", "Build with multilib support"
 
