@@ -3,7 +3,7 @@ require "formula"
 class RiscvTools < Formula
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-tools/archive/homebrew.tar.gz"
-  sha1 "e119bc4a4bf1de5a87aeec5bdfe6179591b53b80"
+  sha256 "cb919eb7cf11071c6d11c721a9e77893a2dbe9158466e444eb3dd8476a89b7b4"
   version "0.1"
 
   # install rest of tools
