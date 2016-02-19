@@ -14,7 +14,7 @@ class RiscvIsaSim < Formula
 
 
   def install
-    system "mkdir", "build"
+    mkdir "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
       system "make", "install"

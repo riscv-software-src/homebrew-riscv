@@ -30,14 +30,14 @@ class RiscvGcc < Formula
 
     args = ["--prefix=#{prefix}"]
     args << "--enable-multilib" if build.with?("multilib")
-    system "mkdir", "build"
+    mkdir "build"
     cd "build" do
       system "../configure", *args
       system "make"
     end
 
     if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-5.3.0/")
-      system "rm", "-rf", "#{prefix}/share"
+      rm "-rf", "#{share}"
     end
   end
 

@@ -14,7 +14,7 @@ class RiscvFesvr < Formula
   def install
     ENV['CXXFLAGS'] = "-DTARGET_ARCH=\"\""
 
-    system "mkdir", "build"
+    mkdir "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
       system "make", "prefix=#{HOMEBREW_PREFIX}"

@@ -22,7 +22,7 @@ class RiscvPk < Formula
     ENV.delete 'LDFLAGS'
     ENV['CC'] = "riscv64-unknown-elf-gcc"
 
-    system "mkdir", "build"
+    mkdir "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
       system "make", "install"
