@@ -13,7 +13,8 @@ class RiscvTools < Formula
   depends_on "riscv-pk"
 
   def install
-    # dummy because done by dependences
+    prefix.install "build.common"
+    # not needed, but used to prevent formula being marked as empty
   end
 
   test do
