@@ -4,13 +4,13 @@ osx_image: xcode7.3
 
 script:
   - brew tap riscv/riscv
-  - travis_wait 45 brew install riscv-tools
+  - travis_wait 60 brew install riscv-tools
   - brew test riscv-tools
   # now rebuild (instead of from pre-built binaries)
   - brew reinstall --build-from-source riscv-fesvr
   - brew reinstall --build-from-source riscv-isa-sim
   # avoid timeouts during long gcc build
-  - travis_wait 45 brew reinstall --build-from-source riscv-gcc
+  - travis_wait 60 brew reinstall --build-from-source riscv-gcc
   - brew reinstall --build-from-source riscv-pk
   - rm -f hello.c a.out
   - brew test riscv-tools
