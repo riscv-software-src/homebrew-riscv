@@ -3,6 +3,7 @@ language: objective-c
 osx_image: xcode7.3
 
 script:
+  - brew update
   - brew tap riscv/riscv
   - travis_wait 60 brew install riscv-tools
   - brew test riscv-tools
