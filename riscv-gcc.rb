@@ -36,7 +36,7 @@ class RiscvGcc < Formula
       system "make"
     end
 
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-5.3.0/")
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-6.1.0/")
       rm "-rf", "#{share}"
     end
   end
