@@ -27,6 +27,7 @@ class RiscvPk < Formula
       system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
       system "make", "install"
     end
+    prefix.install Dir["#{prefix}/riscv64-unknown-elf/*"]
   end
 
   test do
