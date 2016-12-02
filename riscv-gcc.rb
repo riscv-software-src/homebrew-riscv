@@ -6,8 +6,8 @@ class RiscvGcc < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    revision 2
-    sha256 "fc63a7b0d599a35ebd7e334dad8fd3956cceb7ab48fd4a7766c20d28be92a9a5" => :el_capitan
+    rebuild 3
+    sha256 "6e41eb1f33f4b00ac732bc9edac46201d2c0758b9f501a3d4d389d7c50c81022" => :sierra
   end
 
   option "with-multilib", "Build with multilib support"
