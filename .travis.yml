@@ -1,6 +1,6 @@
 language: objective-c
 # should give access to macOS 10.12
-osx_image: xcode8
+osx_image: xcode8.2
 
 script:
   - brew update
@@ -11,7 +11,7 @@ script:
   - brew reinstall --build-from-source riscv-fesvr
   - brew reinstall --build-from-source riscv-isa-sim
   # avoid timeouts during long gcc build
-  - travis_wait 60 brew reinstall --build-from-source riscv-gcc
+  # - travis_wait 60 brew reinstall --build-from-source riscv-gcc
   - brew reinstall --build-from-source riscv-pk
   - rm -f hello.c a.out
   - brew test riscv-tools
