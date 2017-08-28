@@ -1,6 +1,6 @@
 language: objective-c
 # should give access to macOS 10.12
-osx_image: xcode8.2
+osx_image: xcode8.3
 
 script:
   - brew update
