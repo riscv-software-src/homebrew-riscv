@@ -11,6 +11,7 @@ class RiscvIsaSim < Formula
   end
 
   depends_on "riscv-fesvr"
+  depends_on "dtc"
 
 
   def install
