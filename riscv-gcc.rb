@@ -6,7 +6,8 @@ class RiscvGcc < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    sha256 "298c6e1aa03980000f1df7f6ed635192d67c25644460c571342ee8c05e3622a3" => :sierra
+    rebuild 4
+    sha256 "f3fa6441a73a2987001f6f5a2aa079fba4e7a1c0e71cd4645a00fb455b576f49" => :sierra
   end
 
   option "with-multilib", "Build with multilib support"
@@ -37,7 +38,12 @@ class RiscvGcc < Formula
 
     # don't install Python bindings if system already has them
     if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.1.1/")
-      rm_rf share
+      rm_rf "share/gcc-7.1.1"
+    end
+
+    # don't install gdb bindings if system already has them
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gdb/")
+      rm_rf "share/gdb"
     end
   end
 
