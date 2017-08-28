@@ -37,7 +37,7 @@ class RiscvGcc < Formula
     end
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-6.1.0/")
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.1.1/")
       rm_rf share
     end
   end
