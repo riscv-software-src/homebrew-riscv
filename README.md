@@ -1,5 +1,42 @@
-# These are obselete
+RISC-V Toolchain [![Build Status](https://travis-ci.org/riscv/homebrew-riscv.svg?branch=master)](https://travis-ci.org/riscv/homebrew-riscv)
+================
 
-SiFive now releases binary toolchains for OSX:
-https://www.sifive.com/products/tools .  If someone wants to resurrect the
-build, just submit a PR!
+This provides packages to install the [RISC-V](http://riscv.org) toolchain on OS X using [Homebrew](http://brew.sh).
+
+
+Installation
+------------
+
+First, install homebrew:
+
+    $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+Get this tap:
+
+    $ brew tap riscv/riscv
+
+Build the toolchain:
+
+    $ brew install riscv-tools
+
+If you have macOS Sierra (10.12), `riscv-tools` will be installed from precompiled binaries. If you do not have Sierra, `riscv-tools` will be built from source. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
+
+    $ brew install --cc=gcc-5 riscv-tools
+
+
+Testing
+-------
+
+You can verify your install was successful by:
+
+    $ brew test riscv-tools
+
+This will compile and run a hello world, so it will use all of the components ([riscv-fesvr](http://github.com/riscv/riscv-fesvr), [riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gcc](http://github.com/riscv/riscv-gcc)).
+
+
+Updating
+--------
+
+To pull in the latest version of a package, you can force an install and compile it yourself by:
+
+    $ brew reinstall --build-from-source riscv-fesvr
