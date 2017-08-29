@@ -6,8 +6,8 @@ class RiscvGcc < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    rebuild 5
-    sha256 "7a75172ffd44d8ef2e14a085a1f5dfcc2dfdaad5ccfd58ae37f3a86b5d4f3f58" => :sierra
+    rebuild 6
+    sha256 "1247ef0c9e59b010060c5e5144546eaf5e509db976bf3ea05ef8cb14e8b762a7" => :sierra
   end
 
   option "with-multilib", "Build with multilib support"
@@ -37,18 +37,24 @@ class RiscvGcc < Formula
     end
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.1.1/")
-      rm_rf "share/gcc-7.1.1"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.1.1")
+      opoo "Not overwriting share/gcc-7.1.1"
+      rm_rf "#{prefix}/share/gcc-7.1.1"
     end
 
     # don't install gdb bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gdb/")
-      rm_rf "share/gdb"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gdb")
+      opoo "Not overwriting share/gdb"
+      rm_rf "#{prefix}/share/gdb"
+      rm "#{prefix}/share/info/annotate.info"
+      rm "#{prefix}/share/info/gdb.info"
+      rm "#{prefix}/share/info/stabs.info"
     end
 
     # don't install gdb includes if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/include/gdb/")
-      rm_rf "include/gdb"
+    if File.exist?("#{HOMEBREW_PREFIX}/include/gdb")
+      opoo "Not overwriting include/gdb"
+      rm_rf "#{prefix}/include/gdb"
     end
   end
 
