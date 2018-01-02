@@ -18,6 +18,7 @@ class RiscvTools < Formula
   end
 
   test do
+    ENV.delete 'CPATH'
     hello = "hello"
     (testpath/'hello.c').write("#include <stdio.h>
 int main() {

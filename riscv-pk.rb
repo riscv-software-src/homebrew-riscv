@@ -13,13 +13,8 @@ class RiscvPk < Formula
   depends_on "riscv-isa-sim" => :build
   depends_on "riscv-gcc" => :build
 
-  # disable superenv to use brew installed riscv-gcc
-  env :std
-
   def install
     # using riscv-gcc from std env
-    ENV.delete 'CFLAGS'
-    ENV.delete 'LDFLAGS'
     ENV['CC'] = "riscv64-unknown-elf-gcc"
 
     mkdir "build"

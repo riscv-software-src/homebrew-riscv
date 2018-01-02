@@ -19,27 +19,33 @@ class RiscvGcc < Formula
   depends_on "libmpc"
   depends_on "isl"
 
-  # disable superenv's flags
-  env :std
+  # Fix parallel build on APFS filesystem
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797
+  if MacOS.version >= :high_sierra
+    patch :DATA
+  end
 
   def install
     # disable crazy flag additions
-    ENV.delete 'CFLAGS'
-    ENV.delete 'CXXFLAGS'
-    ENV.delete 'LD'
+    ENV.delete 'CPATH'
 
-    args = ["--prefix=#{prefix}"]
+    args = [
+      "--prefix=#{prefix}",
+      "--with-gmp=#{Formula["gmp"].opt_prefix}",
+      "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+      "--with-mpc=#{Formula["libmpc"].opt_prefix}",
+      "--with-isl=#{Formula["isl"].opt_prefix}",
+      "--with-system-zlib"
+    ]
     args << "--enable-multilib" if build.with?("multilib")
-    mkdir "build"
-    cd "build" do
-      system "../configure", *args
-      system "make"
-    end
+
+    system "./configure", *args
+    system "make"
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.1.1")
-      opoo "Not overwriting share/gcc-7.1.1"
-      rm_rf "#{prefix}/share/gcc-7.1.1"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.2.0")
+      opoo "Not overwriting share/gcc-7.2.0"
+      rm_rf "#{prefix}/share/gcc-7.2.0"
     end
 
     # don't install gdb bindings if system already has them
@@ -62,3 +68,18 @@ class RiscvGcc < Formula
     system "false"
   end
 end
+
+__END__
+diff --git a/riscv-gcc/libstdc++-v3/include/Makefile.in b/riscv-gcc/libstdc++-v3/include/Makefile.in
+index 783c647087f..5a6c8035067 100644
+--- a/riscv-gcc/libstdc++-v3/include/Makefile.in
++++ b/riscv-gcc/libstdc++-v3/include/Makefile.in
+@@ -1764,6 +1764,8 @@ ${pch3_output}: ${pch3_source} ${pch2_output}
+ @GLIBCXX_HOSTED_TRUE@install-data-local: install-headers
+ @GLIBCXX_HOSTED_FALSE@install-data-local: install-freestanding-headers
+ 
++.NOTPARALLEL: install-headers
++
+ # This is a subset of the full install-headers rule.  We only need <ciso646>,
+ # <cstddef>, <cfloat>, <limits>, <climits>, <cstdint>, <cstdlib>, <new>,
+ # <typeinfo>, <exception>, <initializer_list>, <cstdalign>, <cstdarg>,
