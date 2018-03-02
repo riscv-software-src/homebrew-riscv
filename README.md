@@ -31,7 +31,7 @@ You can verify your install was successful by:
 
     $ brew test riscv-tools
 
-This will compile and run a hello world, so it will use all of the components ([riscv-fesvr](http://github.com/riscv/riscv-fesvr), [riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gcc](http://github.com/riscv/riscv-gcc)).
+This will compile and run a hello world, so it will use all of the components ([riscv-fesvr](http://github.com/riscv/riscv-fesvr), [riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gnu-toolchain](http://github.com/riscv/riscv-gnu-toolchain)).
 
 
 Updating
