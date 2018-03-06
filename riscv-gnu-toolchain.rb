@@ -1,6 +1,6 @@
 require "formula"
 
-class RiscvGcc < Formula
+class RiscvGnuToolchain < Formula
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-gnu-toolchain.git"
 
