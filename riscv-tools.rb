@@ -25,7 +25,7 @@ int main() {
   printf(\"#{hello}\");
   return 0;
 }")
-    system "riscv64-unknown-elf-gcc", (testpath/'hello.c')
+    system "#{Formula["riscv-gnu-toolchain"].opt_prefix}/bin/riscv64-unknown-elf-gcc", (testpath/'hello.c')
     assert_equal hello, shell_output("spike pk #{testpath}/a.out")
   end
 end
