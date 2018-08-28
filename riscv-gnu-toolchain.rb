@@ -21,23 +21,16 @@ class RiscvGnuToolchain < Formula
   depends_on "libmpc"
   depends_on "isl"
 
-  # Fix parallel build on APFS filesystem
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797
-  if MacOS.version >= :high_sierra
-    patch :DATA
-  end
+  # isl 0.20 compatibility
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=86724
+  patch :DATA
 
   def install
     # disable crazy flag additions
     ENV.delete 'CPATH'
 
     args = [
-      "--prefix=#{prefix}",
-      "--with-gmp=#{Formula["gmp"].opt_prefix}",
-      "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-      "--with-mpc=#{Formula["libmpc"].opt_prefix}",
-      "--with-isl=#{Formula["isl"].opt_prefix}",
-      "--with-system-zlib"
+      "--prefix=#{prefix}"
     ]
     args << "--enable-multilib" if build.with?("multilib")
 
@@ -45,9 +38,9 @@ class RiscvGnuToolchain < Formula
     system "make"
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-7.2.0")
-      opoo "Not overwriting share/gcc-7.2.0"
-      rm_rf "#{prefix}/share/gcc-7.2.0"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-8.2.0")
+      opoo "Not overwriting share/gcc-8.2.0"
+      rm_rf "#{prefix}/share/gcc-8.2.0"
     end
 
     # don't install gdb bindings if system already has them
@@ -72,16 +65,15 @@ class RiscvGnuToolchain < Formula
 end
 
 __END__
-diff --git a/riscv-gcc/libstdc++-v3/include/Makefile.in b/riscv-gcc/libstdc++-v3/include/Makefile.in
-index 783c647087f..5a6c8035067 100644
---- a/riscv-gcc/libstdc++-v3/include/Makefile.in
-+++ b/riscv-gcc/libstdc++-v3/include/Makefile.in
-@@ -1764,6 +1764,8 @@ ${pch3_output}: ${pch3_source} ${pch2_output}
- @GLIBCXX_HOSTED_TRUE@install-data-local: install-headers
- @GLIBCXX_HOSTED_FALSE@install-data-local: install-freestanding-headers
- 
-+.NOTPARALLEL: install-headers
-+
- # This is a subset of the full install-headers rule.  We only need <ciso646>,
- # <cstddef>, <cfloat>, <limits>, <climits>, <cstdint>, <cstdlib>, <new>,
- # <typeinfo>, <exception>, <initializer_list>, <cstdalign>, <cstdarg>,
+diff --git a/riscv-gcc/gcc/graphite.h b/riscv-gcc/gcc/graphite.h
+index 4e0e58c..be0a22b 100644
+--- a/riscv-gcc/gcc/graphite.h
++++ b/riscv-gcc/gcc/graphite.h
+@@ -37,6 +37,8 @@ along with GCC; see the file COPYING3.  If not see
+ #include <isl/schedule.h>
+ #include <isl/ast_build.h>
+ #include <isl/schedule_node.h>
++#include <isl/id.h>
++#include <isl/space.h>
+
+ typedef struct poly_dr *poly_dr_p;
