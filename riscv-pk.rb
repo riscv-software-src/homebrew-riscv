@@ -15,6 +15,7 @@ class RiscvPk < Formula
 
   depends_on "riscv-isa-sim" => :build
   depends_on "riscv-gcc" => :build
+  depends_on "gnu-sed" => :build
 
   def install
     # using riscv-gcc from std env
@@ -23,6 +24,8 @@ class RiscvPk < Formula
     mkdir "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
+      # Requires gnu-sed's behavior to build, and don't want to change unused
+      inreplace "Makefile", " sed", " gsed"
       system "make", "install"
     end
     prefix.install Dir["#{prefix}/riscv64-unknown-elf/*"]
