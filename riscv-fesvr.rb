@@ -7,7 +7,8 @@ class RiscvFesvr < Formula
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
     cellar :any
-    sha256 "0905317028486c6921331981a9ce9146623b4b3a46a7f5c940acc91e6422021a" => :high_sierra
+    rebuild 1
+    sha256 "8af6a3159a02a8600a0e86533794d6ec759d34f1b380382865147318eb85f9d3" => :mojave
   end
 
 
