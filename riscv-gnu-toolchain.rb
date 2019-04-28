@@ -20,10 +20,6 @@ class RiscvGnuToolchain < Formula
   depends_on "libmpc"
   depends_on "isl"
 
-  # isl 0.20 compatibility
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=86724
-  patch :DATA
-
   def install
     # disable crazy flag additions
     ENV.delete 'CPATH'
@@ -64,15 +60,3 @@ class RiscvGnuToolchain < Formula
 end
 
 __END__
-diff --git a/riscv-gcc/gcc/graphite.h b/riscv-gcc/gcc/graphite.h
-index 4e0e58c..be0a22b 100644
---- a/riscv-gcc/gcc/graphite.h
-+++ b/riscv-gcc/gcc/graphite.h
-@@ -37,6 +37,8 @@ along with GCC; see the file COPYING3.  If not see
- #include <isl/schedule.h>
- #include <isl/ast_build.h>
- #include <isl/schedule_node.h>
-+#include <isl/id.h>
-+#include <isl/space.h>
-
- typedef struct poly_dr *poly_dr_p;
