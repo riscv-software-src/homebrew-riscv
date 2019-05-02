@@ -15,9 +15,13 @@ class RiscvIsaSim < Formula
 
 
   def install
+    # this + prefixes below help spike find pk after being installed
+    ENV['CXXFLAGS'] = "-DTARGET_ARCH=\"\""
+
     mkdir "build"
     cd "build" do
       system "../configure", "--prefix=#{prefix}"
+      system "make", "prefix=#{HOMEBREW_PREFIX}"
       system "make", "install"
     end
   end
