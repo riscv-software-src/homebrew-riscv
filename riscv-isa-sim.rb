@@ -11,7 +11,6 @@ class RiscvIsaSim < Formula
     sha256 "43b5e9fa752fcbda827a0803c91f6599ecc88967d2ffd44b7207baa2ca90fabd" => :high_sierra
   end
 
-  depends_on "riscv-fesvr"
   depends_on "dtc"
 
 

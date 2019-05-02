@@ -7,7 +7,6 @@ class RiscvTools < Formula
   version "0.2"
 
   # install rest of tools
-  depends_on "riscv-fesvr"
   depends_on "riscv-isa-sim"
   depends_on "riscv-gnu-toolchain"
   depends_on "riscv-pk"
