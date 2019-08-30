@@ -6,9 +6,9 @@ class RiscvIsaSim < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    rebuild 7
-    sha256 "370093bbc74f739ea0f0d90389ab29112501afe66a4b728178fabb22be92a320" => :mojave
-    sha256 "6ba9cadda5b2c99ce5b6550a0b7e8abd12a346ed1ffc965008e8d3042376bb1a" => :high_sierra
+    rebuild 8
+    sha256 "26929b901717fdbdcf1e92f84e3bf1a29b4f1b7a24f15b66c80aad957f10e9ba" => :mojave
+    sha256 "dac3adfd69c26c8ff9af507c204feb2ce50f23d2220550228245f54cbd29a0ba" => :high_sierra
   end
 
   depends_on "dtc"
