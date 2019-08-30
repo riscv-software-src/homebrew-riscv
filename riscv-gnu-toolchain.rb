@@ -33,9 +33,9 @@ class RiscvGnuToolchain < Formula
     system "make"
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-8.3.0")
-      opoo "Not overwriting share/gcc-8.3.0"
-      rm_rf "#{prefix}/share/gcc-8.3.0"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-9.2.0")
+      opoo "Not overwriting share/gcc-9.2.0"
+      rm_rf "#{prefix}/share/gcc-9.2.0"
     end
 
     # don't install gdb bindings if system already has them
