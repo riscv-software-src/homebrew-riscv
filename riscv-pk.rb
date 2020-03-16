@@ -3,6 +3,7 @@ require "formula"
 class RiscvPk < Formula
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-pk.git"
+  version "master"
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
