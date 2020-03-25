@@ -7,9 +7,7 @@ class RiscvGnuToolchain < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    rebuild 6
-    sha256 "6cbae8f83e807199cfe93e5fbdc83b3d6fb8f67f82ecb601b15b4d62da60c56d" => :mojave
-    sha256 "7f5f362191a6ee9bba000a260629594e75bc0d9bc9a9b92ddb7d4d850dc550b2" => :high_sierra
+    sha256 "ce75cd6eb4220af90ed0587237f167be667fe1cf00b9a1ea02a652a66c33ff32" => :catalina
   end
 
   option "with-multilib", "Build with multilib support"
