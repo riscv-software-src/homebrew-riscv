@@ -31,7 +31,7 @@ You can verify your install was successful by:
 
     $ brew test riscv-tools
 
-This will compile and run a hello world, so it will use all of the components [riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gnu-toolchain](http://github.com/riscv/riscv-gnu-toolchain)).
+This will compile and run a hello world, so it will use all of the components ([riscv-isa-sim](http://github.com/riscv/riscv-isa-sim), [riscv-pk](http://github.com/riscv/riscv-pk), and [riscv-gnu-toolchain](http://github.com/riscv/riscv-gnu-toolchain)).
 
 
 Updating
@@ -39,4 +39,11 @@ Updating
 
 To pull in the latest version of a package, you can force an install and compile it yourself by:
 
-    $ brew reinstall --build-from-source riscv-fesvr
+    $ brew reinstall --build-from-source riscv-gnu-toolchain
+
+Supporting 32 bit Targets
+-------------------------
+
+By default the toolchain only supports 64 bit RISC-V targets. To install a toolchain that supports both 64 bit and 32 bit:
+
+    $ brew install riscv-gnu-toolchain --with-multilib
