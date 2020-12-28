@@ -7,8 +7,8 @@ class RiscvGnuToolchain < Formula
 
   bottle do
     root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    rebuild 1
-    sha256 "4ddfd1bdf3373d3674ba808a94740f90e800f542c65219ba4b3ad77408517086" => :catalina
+    rebuild 2
+    sha256 "b576971f965cdcc01d2bc7115db0cdb1fee9f3604507f08285e8b6bcb4e112e6" => :catalina
   end
 
   option "with-multilib", "Build with multilib support"
@@ -33,9 +33,9 @@ class RiscvGnuToolchain < Formula
     system "make"
 
     # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-9.2.0")
-      opoo "Not overwriting share/gcc-9.2.0"
-      rm_rf "#{prefix}/share/gcc-9.2.0"
+    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-10.2.0")
+      opoo "Not overwriting share/gcc-10.2.0"
+      rm_rf "#{prefix}/share/gcc-10.2.0"
     end
 
     # don't install gdb bindings if system already has them
