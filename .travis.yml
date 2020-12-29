@@ -1,6 +1,6 @@
 language: objective-c
-# should give access to macOS 10.14
-osx_image: xcode12
+# should give access to macOS 10.15.7
+osx_image: xcode12.2
 
 script:
   - brew update
@@ -8,7 +8,7 @@ script:
   - travis_wait 60 brew install riscv-tools
   - brew test riscv-tools
   # now rebuild (instead of from pre-built binaries)
-  - brew reinstall --build-from-source riscv-isa-sim
+  - travis_wait 60 brew reinstall --build-from-source riscv-isa-sim
   # avoid timeouts during long gcc build
   # - travis_wait 60 brew reinstall --build-from-source riscv-gcc
   - brew reinstall --build-from-source riscv-pk
