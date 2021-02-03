@@ -29,6 +29,11 @@ class RiscvGnuToolchain < Formula
     ]
     args << "--enable-multilib" if build.with?("multilib")
 
+    # Workaround for M1
+    # See https://github.com/riscv/homebrew-riscv/issues/47
+    system 'sed', '-i', '.bak', 's/.*=host-darwin.o$//', 'riscv-gcc/gcc/config.host'
+    system 'sed', '-i', '.bak', 's/.* x-darwin.$//', 'riscv-gcc/gcc/config.host'
+
     system "./configure", *args
     system "make"
 
