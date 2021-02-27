@@ -1,24 +1,22 @@
-require "formula"
-
 class RiscvPk < Formula
+  desc "RISC-V Proxy Kernel"
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-pk.git"
   version "master"
 
   bottle do
-    root_url 'http://riscv.org.s3.amazonaws.com/bottles'
-    cellar :any_skip_relocation
+    root_url "http://riscv.org.s3.amazonaws.com/bottles"
     rebuild 2
-    sha256 "0f144a85ebef54c11aac0ccfb14ef0c0cf5d2b7b758271b17ddfa2ed2041e533" => :catalina
+    sha256 cellar: :any_skip_relocation, catalina: "0f144a85ebef54c11aac0ccfb14ef0c0cf5d2b7b758271b17ddfa2ed2041e533"
   end
 
-  depends_on "riscv-isa-sim" => :build
-  depends_on "riscv-gcc" => :build
   depends_on "gnu-sed" => :build
+  depends_on "riscv-gnu-toolchain" => :build
+  depends_on "riscv-isa-sim" => :build
 
   def install
     # using riscv-gcc from std env
-    ENV['CC'] = "riscv64-unknown-elf-gcc"
+    ENV["CC"] = "riscv64-unknown-elf-gcc"
 
     mkdir "build"
     cd "build" do
