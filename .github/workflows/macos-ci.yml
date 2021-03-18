@@ -1,0 +1,23 @@
+name: macOS CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-11.0
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: brew update
+      run: brew update
+    - name: tap riscv
+      run: brew tap riscv/riscv
+    - name: install tools
+      run: brew install riscv-tools
+    - name: test
+      run: brew test riscv-tools
