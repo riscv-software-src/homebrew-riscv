@@ -27,6 +27,8 @@ class RiscvGnuToolchain < Formula
       "--prefix=#{prefix}",
     ]
     args << "--enable-multilib" if build.with?("multilib")
+    # avoid certain types of relocation errors when multilib is enabled
+    args << "--with-cmodel=medany" if build.with?("multilib")
 
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
