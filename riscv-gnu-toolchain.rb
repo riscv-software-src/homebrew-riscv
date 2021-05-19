@@ -25,6 +25,7 @@ class RiscvGnuToolchain < Formula
 
     args = [
       "--prefix=#{prefix}",
+      "--with-cmodel=medany",
     ]
     args << "--enable-multilib" if build.with?("multilib")
 
