@@ -44,6 +44,4 @@ To pull in the latest version of a package, you can force an install and compile
 Supporting 32 bit Targets
 -------------------------
 
-By default the toolchain only supports 64 bit RISC-V targets. To install a toolchain that supports both 64 bit and 32 bit:
-
-    $ brew install riscv-gnu-toolchain --with-multilib
+By default the toolchain supports 64 bit and 32 bit RISC-V targets.
