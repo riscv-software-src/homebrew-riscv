@@ -10,7 +10,8 @@ class RiscvGnuToolchain < Formula
     sha256 big_sur: "9215a88e36c8f69d8503ca568cb73fc9df8cbe50a982671d1b7a25f4cb0b496e"
   end
 
-  option "with-multilib", "Build with multilib support"
+  # enabling multilib by default, must choose to build without
+  option "with-NOmultilib", "Build WITHOUT multilib support"
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
@@ -27,7 +28,7 @@ class RiscvGnuToolchain < Formula
       "--prefix=#{prefix}",
       "--with-cmodel=medany",
     ]
-    args << "--enable-multilib" if build.with?("multilib")
+    args << "--enable-multilib" unless build.with?("NOmultilib")
 
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
