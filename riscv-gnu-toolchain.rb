@@ -7,7 +7,8 @@ class RiscvGnuToolchain < Formula
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
     rebuild 6
-    sha256 big_sur: "a30487013cca111284df72c87852d8a2659fdcc1a731b4a996e6d68687361b14"
+    sha256 big_sur:  "a30487013cca111284df72c87852d8a2659fdcc1a731b4a996e6d68687361b14"
+    sha256 catalina: "a30487013cca111284df72c87852d8a2659fdcc1a731b4a996e6d68687361b14"
   end
 
   # enabling multilib by default, must choose to build without
