@@ -20,6 +20,7 @@ class RiscvGnuToolchain < Formula
   depends_on "isl"
   depends_on "libmpc"
   depends_on "mpfr"
+  depends_on "zstd"
 
   def install
     # disable crazy flag additions
