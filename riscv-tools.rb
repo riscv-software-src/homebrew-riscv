@@ -7,6 +7,7 @@ class RiscvTools < Formula
 
   # install rest of tools
   depends_on "riscv-gnu-toolchain"
+  depends_on "riscv-openocd"
   depends_on "riscv-isa-sim"
   depends_on "riscv-pk"
 
