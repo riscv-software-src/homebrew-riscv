@@ -23,6 +23,9 @@ If you have macOS Big Sur (11), `riscv-tools` will be installed from precompiled
 
     $ brew install --cc=gcc-10 riscv-tools
 
+Due to high number of dependences the RISC-V version of OpenOCD is not installed by default. If needed, it can be installed with:
+
+    $ brew install riscv-openocd
 
 Testing
 -------
