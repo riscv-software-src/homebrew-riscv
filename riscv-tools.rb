@@ -25,6 +25,6 @@ int main() {
   return 0;
 }")
     system "#{Formula["riscv-gnu-toolchain"].opt_prefix}/bin/riscv64-unknown-elf-gcc", (testpath/"hello.c")
-    assert_equal "bbl loader\r\nhello", shell_output("spike pk #{testpath}/a.out")
+    assert_equal "bbl loader\r\nhello", shell_output("spike #{Formula["riscv-pk"].opt_prefix}/bin/pk #{testpath}/a.out")
   end
 end
