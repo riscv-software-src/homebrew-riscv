@@ -19,8 +19,20 @@ class RiscvIsaSim < Formula
     mkdir "build"
     cd "build" do
       args = [
-        "--prefix=#{prefix}"
+        "--prefix=#{prefix}",
+        "--with-arch=rv64imafdcv",
       ]
+      if build.with("BExt")
+        args << "--with-arch=rv64imafdcb"
+      elsif build.with("ZExt")
+        args << "--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt"
+      elsif build.with("KExt")
+        args << "--with-arch=rv64imafdck"
+      elsif build.with?("NOVExt")
+        args << "--with-arch=rv64imafdc"
+      else
+        args << "--with-arch=rv64imafdcv" 
+      end
       if build.with? "boost"
         # This seems to be needed at least on macos/arm64
         args << "--with-boost=#{Formula["boost"].prefix}"

@@ -20,7 +20,17 @@ class RiscvPk < Formula
 
     mkdir "build"
     cd "build" do
-      system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
+      if build.with("BExt")
+        system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", "--with-arch=rv64imafdcb"
+      elsif build.with("ZExt")
+        system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", "--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt"
+      elsif build.with("KExt")
+        system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", "--with-arch=rv64imafdck"
+      elsif build.with?("NOVExt")
+        system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", "--with-arch=rv64imafdc"
+      else
+        system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", "--with-arch=rv64imafdcv" 
+      end
       # Requires gnu-sed's behavior to build, and don't want to change -Wno-unused
       inreplace "Makefile", " sed", " gsed"
       system "make", "install"

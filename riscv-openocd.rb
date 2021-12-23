@@ -21,7 +21,17 @@ class RiscvOpenocd < Formula
 
   def install
     system "./bootstrap", "nosubmodule"
-    system "./configure", *std_configure_args, "--disable-silent-rules"
+    if build.with("BExt")
+      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcb"
+    elsif build.with("ZExt")
+      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt"
+    elsif build.with("KExt")
+      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdck"
+    elsif build.with?("NOVExt")
+      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdc"
+    else
+      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcv" 
+    end
     system "make", "install"
   end
 

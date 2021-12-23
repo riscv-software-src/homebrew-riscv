@@ -12,6 +12,10 @@ class RiscvGnuToolchain < Formula
 
   # enabling multilib by default, must choose to build without
   option "with-NOmultilib", "Build WITHOUT multilib support"
+  option "with-NOVExt", "Build WITHOUT V Extension"
+  option "with-ZExt", "Build WITHOUT Z Extension"
+  option "with-KExt", "Build WITHOUT K Extension"
+  option "with-BExt", "Build WITHOUT B Extension"
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
@@ -31,11 +35,27 @@ class RiscvGnuToolchain < Formula
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
 
+    if build.with("BExt")
+      args << "--with-arch=rv64imafdcb"
+      system "cd riscv-gcc/ && git remote add pz9115 https://github.com/pz9115/riscv-gcc.git && git fetch pz9115 && git checkout riscv-gcc-10.2.0-rvb && cd ../riscv-binutils && git remote add pz9115 https://github.com/pz9115/riscv-binutils-gdb.git && git fetch pz9115 && git checkout riscv-binutils-experiment && cd .." 
+    elsif build.with("ZExt")
+      args << "--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt --with-abi=lp64 --with-multilib-generator='rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt-lp64--'"
+      system "cd riscv-gcc/ && git remote add pz9115 https://github.com/pz9115/riscv-gcc.git && git fetch pz9115 && git checkout riscv-gcc-10.2.0-rvb && cd ../riscv-binutils && git remote add pz9115 https://github.com/pz9115/riscv-binutils-gdb.git && git fetch pz9115 && git checkout riscv-binutils-experiment && cd .." 
+    elsif build.with("KExt")
+      args << "--with-arch=rv64imafdck"
+      system "cd riscv-gcc/ && git remote add wsy https://github.com/WuSiYu/riscv-gcc.git && git fetch wsy && git checkout riscv-gcc-10.2.0-crypto && cd ../riscv-binutils && git remote add pz9115 https://github.com/pz9115/riscv-binutils-gdb.git && git fetch pz9115 && git checkout riscv-binutils-2.36-k-ext && cd .." 
+    elsif build.with?("NOVExt")
+      args << "--with-arch=rv64imafdc"
+    else
+      args << "--with-abi=lp64d --with-multilib-generator='rv64gcv-lp64d--' --with-arch=rv64imafdcv" 
+      system "cd riscv-gcc/ && git fetch origin && git checkout riscv-gcc-10.1-rvv-dev && cd ../riscv-binutils && git fetch origin && git checkout rvv-1.0.x && cd .." unless build.with?("NOVExt")
+    end
+
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
     system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "riscv-gcc/gcc/config.host"
     system "sed", "-i", ".bak", "s/.* x-darwin.$//", "riscv-gcc/gcc/config.host"
-
+    
     system "./configure", *args
     system "make"
 

@@ -50,3 +50,15 @@ Supporting 32 bit Targets
 By default the toolchain will enable multilib with support for 32 bit targets. To disable multilib to speed up build times and save space:
 
     $ brew install riscv-gnu-toolchain --with-NOmultilib
+Supporting V/B/Z Extentions
+-------------------------
+
+By default the toolchain will enable Vector Extentions. To enable B/Z/K extensions. These configurations are conflicting.
+
+    $ brew install riscv-gnu-toolchain --with-BExt
+    $ brew install riscv-gnu-toolchain --with-ZExt    
+    $ brew install riscv-gnu-toolchain --with-KExt
+
+To disable VExt to speed up build times and save space:
+
+    $ brew install riscv-gnu-toolchain --with-NOVExt
