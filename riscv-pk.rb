@@ -25,7 +25,6 @@ class RiscvPk < Formula
       inreplace "Makefile", " sed", " gsed"
       system "make", "install"
     end
-    prefix.install Dir["#{prefix}/riscv64-unknown-elf/*"]
   end
 
   test do
