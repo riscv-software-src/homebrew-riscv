@@ -21,17 +21,12 @@ class RiscvOpenocd < Formula
 
   def install
     system "./bootstrap", "nosubmodule"
-    if build.with("BExt")
-      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcb"
-    elsif build.with("ZExt")
-      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt"
-    elsif build.with("KExt")
-      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdck"
-    elsif build.with?("NOVExt")
-      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdc"
-    else
-      system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcv" 
-    end
+    system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcb" if build.with?("BExt")
+    system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64gc_zba_zbb_zbc_zbe_zbf_zbm_zbp_zbr_zbs_zbt" if build.with?("ZExt")
+    system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdck" if build.with?("KExt")
+    system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdc" if build.with?("NOVExt")
+    system "./configure", *std_configure_args, "--disable-silent-rules","--with-arch=rv64imafdcv" unless build.with?("NOVExt")
+
     system "make", "install"
   end
 
