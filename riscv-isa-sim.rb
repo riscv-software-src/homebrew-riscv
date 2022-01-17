@@ -2,7 +2,7 @@ class RiscvIsaSim < Formula
   desc "RISC-V ISA simulator (spike)"
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-isa-sim.git"
-  version "master"
+  version "main"
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"

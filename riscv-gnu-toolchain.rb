@@ -2,7 +2,7 @@ class RiscvGnuToolchain < Formula
   desc "RISC-V Compiler GNU Toolchain using newlib"
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-gnu-toolchain.git"
-  version "master"
+  version "main"
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"

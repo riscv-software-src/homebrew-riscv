@@ -2,13 +2,12 @@ class RiscvPk < Formula
   desc "RISC-V Proxy Kernel"
   homepage "http://riscv.org"
   url "https://github.com/riscv/riscv-pk.git"
-  version "master"
+  version "main"
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
     rebuild 7
     sha256 cellar: :any_skip_relocation, monterey: "d44670bcba140e67df984f57949e880844c2662c55404cad92ad469c73a16f22"
-  end
 
   depends_on "gnu-sed" => :build
   depends_on "riscv-gnu-toolchain" => :build
