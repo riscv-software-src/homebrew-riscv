@@ -13,7 +13,7 @@ First, install homebrew:
 
 Get this tap:
 
-    $ brew tap riscv/riscv
+    $ brew tap riscv-software-src/riscv
 
 Build the toolchain:
 
@@ -50,3 +50,15 @@ Supporting 32 bit Targets
 By default the toolchain will enable multilib with support for 32 bit targets. To disable multilib to speed up build times and save space:
 
     $ brew install riscv-gnu-toolchain --with-NOmultilib
+
+
+Troubleshooting
+---------------
+To support organization changes, we have had to make the following two naming changes which may cause issues for existing users. It can often be simplest to remove everything (uninstall with `brew remove`, and untap with `brew untap riscv/riscv`) and then to re-install (directions up top). 
+
+* riscv -> riscv-software-src (for organization) - As long as GitHub continues to redirect the URL, this has not caused many problems.
+* master -> main (for default branch name) - GitHub's branch redirection can be problematic. If you don't want to reinstall, you may be able to fix your tap with the following:
+```
+```
+
+`brew --repository`/Library/Taps
