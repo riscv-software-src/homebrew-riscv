@@ -56,7 +56,7 @@ Troubleshooting
 ---------------
 To support organizational changes, we have had to make the following two naming changes which may cause issues for existing users. It can often be simplest to remove everything (uninstall with `brew remove`, and untap with `brew untap riscv/riscv`) and then to re-install (directions up top). 
 
-* `riscv` -> `riscv-software-sr`c (for organization) - As long as GitHub continues to redirect the URL, this has not caused problems.
+* `riscv` -> `riscv-software-src` (for organization) - As long as GitHub continues to redirect the URL, this has not caused problems.
 * `master` -> `main` (for default branch name) - GitHub's branch redirection can be problematic. If you don't want to reinstall, you may be able to fix your tap with the following:
 ```
 $> cd `brew --repository`/Library/Taps/riscv-software-src/homebrew-riscv
