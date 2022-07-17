@@ -1,7 +1,31 @@
+# Avoids pulling in all submodules because so big, especially w/ recursive
+class NoRecursiveGitDownloadStrategy < GitDownloadStrategy
+  sig { params(timeout: T.nilable(Time)).void }
+  def update(timeout: nil)
+    config_repo
+    update_repo(timeout: timeout)
+    checkout(timeout: timeout)
+    reset
+    # update_submodules(timeout: timeout) if submodules?
+  end
+
+  sig { params(timeout: T.nilable(Time)).void }
+  def clone_repo(timeout: nil)
+    command! "git", args: clone_args, timeout: timeout&.remaining
+
+    command! "git",
+             args:    ["config", "homebrew.cacheversion", cache_version],
+             chdir:   cached_location,
+             timeout: timeout&.remaining
+    checkout(timeout: timeout)
+    # update_submodules(timeout: timeout) if submodules?
+  end
+end
+
 class RiscvGnuToolchain < Formula
   desc "RISC-V Compiler GNU Toolchain using newlib"
   homepage "http://riscv.org"
-  url "https://github.com/riscv/riscv-gnu-toolchain.git"
+  url "https://github.com/riscv/riscv-gnu-toolchain.git", :using => NoRecursiveGitDownloadStrategy
   version "main"
 
   bottle do
@@ -15,6 +39,7 @@ class RiscvGnuToolchain < Formula
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
+  depends_on "flock" => :build
   depends_on "gmp"
   depends_on "isl"
   depends_on "libmpc"
@@ -24,6 +49,11 @@ class RiscvGnuToolchain < Formula
   def install
     # disable crazy flag additions
     ENV.delete "CPATH"
+
+    # need to pull in needed submodules (now that they are disabled above)
+    system "git", "submodule", "update", "--init", "--recursive", "newlib"
+    system "git", "submodule", "update", "--init", "--recursive", "riscv-binutils"
+    system "git", "submodule", "update", "--init", "--recursive", "riscv-gcc"
 
     args = [
       "--prefix=#{prefix}",
