@@ -53,7 +53,7 @@ class RiscvGnuToolchain < Formula
     # need to pull in needed submodules (now that they are disabled above)
     system "git", "submodule", "update", "--init", "--recursive", "newlib"
     system "git", "submodule", "update", "--init", "--recursive", "binutils"
-    system "git", "submodule", "update", "--init", "--recursive", "riscv-gcc"
+    system "git", "submodule", "update", "--init", "--recursive", "gcc"
 
     args = [
       "--prefix=#{prefix}",
@@ -63,8 +63,8 @@ class RiscvGnuToolchain < Formula
 
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
-    system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "riscv-gcc/gcc/config.host"
-    system "sed", "-i", ".bak", "s/.* x-darwin.$//", "riscv-gcc/gcc/config.host"
+    system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
+    system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
 
     system "./configure", *args
     system "make"
