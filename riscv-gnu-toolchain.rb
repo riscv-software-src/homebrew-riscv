@@ -40,6 +40,7 @@ class RiscvGnuToolchain < Formula
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
   depends_on "flock" => :build
+  depends_on "texinfo" => :build
   depends_on "gmp"
   depends_on "isl"
   depends_on "libmpc"
