@@ -30,8 +30,8 @@ class RiscvGnuToolchain < Formula
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
-    rebuild 11
-    sha256 monterey: "cc69b8f51e47cf4d8dbb5a6fbf28169a1be4f48d5f3c16903ffd2eacf9f7497f"
+    rebuild 12
+    sha256 ventura: "d38930d0e52ed36c72f2985fc5cc0b032f0109e745bbfa35c3cf485428687736"
   end
 
   # enabling multilib by default, must choose to build without
