@@ -20,7 +20,8 @@ class RiscvPk < Formula
 
     mkdir "build"
     cd "build" do
-      system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf"
+      system "../configure", "--prefix=#{prefix}", "--host=riscv64-unknown-elf", \
+        "--with-arch=rv64imafdc_zifencei"
       # Requires gnu-sed's behavior to build, and don't want to change -Wno-unused
       inreplace "Makefile", " sed", " gsed"
       system "make", "install"
