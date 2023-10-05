@@ -69,6 +69,7 @@ class RiscvGnuToolchain < Formula
 
     system "./configure", *args
     system "make"
+    system "make", "build-qemu"
 
     # don't install Python bindings if system already has them
     if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-11.1.0")
