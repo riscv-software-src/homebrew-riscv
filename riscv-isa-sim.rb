@@ -32,7 +32,6 @@ class RiscvIsaSim < Formula
       # configure uses --with-target to set TARGET_ARCH but homebrew formulas only provide "with"/"without" options
       system "../configure", *args 
       system "make"
-      system "make", "install"
     end
   end
 
