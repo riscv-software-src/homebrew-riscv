@@ -36,6 +36,7 @@ class RiscvGnuToolchain < Formula
 
   # enabling multilib by default, must choose to build without
   option "with-NOmultilib", "Build WITHOUT multilib support"
+  option "with-enable-rvv", "Workaround to enable RISCV Vector Extension"
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
@@ -51,21 +52,35 @@ class RiscvGnuToolchain < Formula
     # disable crazy flag additions
     ENV.delete "CPATH"
 
-    # need to pull in needed submodules (now that they are disabled above)
-    system "git", "submodule", "update", "--init", "--recursive", "newlib"
-    system "git", "submodule", "update", "--init", "--recursive", "binutils"
-    system "git", "submodule", "update", "--init", "--recursive", "gcc"
-
     args = [
       "--prefix=#{prefix}",
       "--with-cmodel=medany",
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
 
+    if build.with?("enable-rvv")
+      puts "Enable RISCV Vector Extension"
+      system "git", "clone", "https://github.com/gcc-mirror/gcc", "-b", "releases/gcc-13", "gcc-13"
+      current_path = `pwd`.chomp
+      args << "--with-gcc-src="+current_path+"/gcc-13"
+    end
+
+    # need to pull in needed submodules (now that they are disabled above)
+    system "git", "submodule", "update", "--init", "--recursive", "newlib"
+    system "git", "submodule", "update", "--init", "--recursive", "binutils"
+    unless build.with?("enable-rvv")
+      system "git", "submodule", "update", "--init", "--recursive", "gcc"
+    end
+
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
-    system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
-    system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
+    if build.with?("enable-rvv")
+      system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc-13/gcc/config.host"
+      system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc-13/gcc/config.host"
+    else
+      system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
+      system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
+    end
 
     system "./configure", *args
     system "make"

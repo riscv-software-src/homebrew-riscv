@@ -5,8 +5,10 @@ class RiscvTools < Formula
   version "0.2"
   sha256 "cb919eb7cf11071c6d11c721a9e77893a2dbe9158466e444eb3dd8476a89b7b4"
 
+  option "with-enable-rvv", "Workaround to enable RISCV Vector Extension"
+  
   # install rest of tools
-  depends_on "riscv-gnu-toolchain"
+  depends_on "riscv-gnu-toolchain" => [:build, "--with-enable-rvv"]
   depends_on "riscv-isa-sim"
   depends_on "riscv-pk"
 
