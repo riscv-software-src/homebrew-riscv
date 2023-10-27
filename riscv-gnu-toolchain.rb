@@ -59,6 +59,7 @@ class RiscvGnuToolchain < Formula
     args = [
       "--prefix=#{prefix}",
       "--with-cmodel=medany",
+      "--disable-gdb",
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
 
