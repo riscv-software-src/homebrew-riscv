@@ -6,8 +6,8 @@ class RiscvIsaSim < Formula
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
-    rebuild 15
-    sha256 cellar: :any, ventura: "4764b4ab32f33fb4ecd5f1a30a5f15a85409083844afd415431d26a1c3f17b19"
+    rebuild 16
+    sha256 cellar: :any, ventura: "6dec4e890d6701f78d7ac6a970c0ea7934d9d36ba0a85406142e40c104ca2659"
   end
 
   depends_on "dtc"
