@@ -59,6 +59,7 @@ class RiscvGnuToolchain < Formula
     args = [
       "--prefix=#{prefix}",
       "--with-cmodel=medany",
+      "--disable-gdb"
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
 
@@ -70,19 +71,16 @@ class RiscvGnuToolchain < Formula
     system "./configure", *args
     system "make"
 
-    # don't install Python bindings if system already has them
-    if File.exist?("#{HOMEBREW_PREFIX}/share/gcc-11.1.0")
-      opoo "Not overwriting share/gcc-11.1.0"
-      rm_rf "#{share}/gcc-11.1.0"
-    end
-
     # don't install gdb bindings if system already has them
     if File.exist?("#{HOMEBREW_PREFIX}/share/gdb")
       opoo "Not overwriting share/gdb"
       rm_rf "#{share}/gdb"
-      rm "#{share}/info/annotate.info"
-      rm "#{share}/info/gdb.info"
-      rm "#{share}/info/stabs.info"
+    end
+    
+    # don't install info if system already has them
+    if File.exist?("#{HOMEBREW_PREFIX}/share/info")
+      opoo "Not overwriting share/info"
+      rm_rf "#{share}/info"
     end
 
     # don't install gdb includes if system already has them
