@@ -65,8 +65,9 @@ class RiscvGnuToolchain < Formula
 
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
-    system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
-    system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
+    # 2024-01-11 Commenting out because no longer needed?
+    # system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
+    # system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
 
     system "./configure", *args
     system "make"
