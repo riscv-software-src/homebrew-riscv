@@ -32,6 +32,7 @@ class RiscvGnuToolchain < Formula
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
     rebuild 15
     sha256 sonoma: "ef2e103e306aa3e4794d8bd5609618835e10260a44fe4502fe7d30beddf0f509"
+    sha256 arm64_sonoma: "0131cce13fae8b9c40d48b2b7cee3682bf1def0430281a2af7f7f8569efb93ac"
   end
 
   # enabling multilib by default, must choose to build without
