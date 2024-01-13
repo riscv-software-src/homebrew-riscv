@@ -72,6 +72,7 @@ class RiscvGnuToolchain < Formula
 
     system "./configure", *args
     system "make"
+    system "make", "build-qemu"
 
     # don't install gdb bindings if system already has them
     if File.exist?("#{HOMEBREW_PREFIX}/share/gdb")
