@@ -13,7 +13,7 @@ First, install homebrew:
 
 Get this tap:
 
-    $ brew tap riscv-software-src/riscv
+    $ brew tap riscv-software-src/homebrew-riscv
 
 Build the toolchain:
 
