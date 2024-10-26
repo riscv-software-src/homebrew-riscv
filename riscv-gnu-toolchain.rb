@@ -40,6 +40,7 @@ class RiscvGnuToolchain < Formula
 
   depends_on "gawk" => :build
   depends_on "gnu-sed" => :build
+  depends_on "make" => :build
   depends_on "flock" => :build
   depends_on "texinfo" => :build
   depends_on "gmp"
@@ -71,7 +72,7 @@ class RiscvGnuToolchain < Formula
     # system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
 
     system "./configure", *args
-    system "make"
+    system "gmake"
 
     # don't install gdb bindings if system already has them
     if File.exist?("#{HOMEBREW_PREFIX}/share/gdb")
