@@ -43,6 +43,7 @@ class RiscvGnuToolchain < Formula
   depends_on "make" => :build
   depends_on "flock" => :build
   depends_on "texinfo" => :build
+  depends_on "gettext"
   depends_on "gmp"
   depends_on "isl"
   depends_on "libmpc"
