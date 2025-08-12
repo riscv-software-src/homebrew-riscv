@@ -50,13 +50,18 @@ class RiscvGnuToolchain < Formula
   depends_on "mpfr"
   depends_on "zstd"
 
+  # patch zlib to compile on newer macOS. remove when zlib >= 1.3.1
+  def patch
+    system "git", "submodule", "update", "--depth", "1", "--init", "--recursive", "binutils"
+    system "patch", "-p1", "-i", Pathname(__dir__) / "zlib-fix.patch"
+  end
+
   def install
     # disable crazy flag additions
     ENV.delete "CPATH"
 
     # need to pull in needed submodules (now that they are disabled above)
     system "git", "submodule", "update", "--depth", "1", "--init", "--recursive", "newlib"
-    system "git", "submodule", "update", "--depth", "1", "--init", "--recursive", "binutils"
     system "git", "submodule", "update", "--depth", "1", "--init", "--recursive", "gcc"
 
     args = [
