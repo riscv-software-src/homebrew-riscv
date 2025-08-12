@@ -1,6 +1,6 @@
 # Avoids pulling in all submodules because so big, especially w/ recursive
 class NoRecursiveGitDownloadStrategy < GitDownloadStrategy
-  sig { params(timeout: T.nilable(Time)).void }
+  sig { override.params(timeout: T.nilable(Time)).void }
   def update(timeout: nil)
     config_repo
     update_repo(timeout: timeout)
@@ -9,7 +9,7 @@ class NoRecursiveGitDownloadStrategy < GitDownloadStrategy
     # update_submodules(timeout: timeout) if submodules?
   end
 
-  sig { params(timeout: T.nilable(Time)).void }
+  sig { override.params(timeout: T.nilable(Time)).void }
   def clone_repo(timeout: nil)
     command! "git", args: clone_args, timeout: timeout&.remaining
 
