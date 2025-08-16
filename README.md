@@ -19,9 +19,9 @@ Build the toolchain:
 
     $ brew install riscv-tools
 
-If you have macOS Sequoia (15), `riscv-tools` will be installed from precompiled binaries. If you do not have Ventura, `riscv-tools` will be built from source. Note building from source will require approximately 6.5 GB for all of the source and intermediate build files. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
+If you have macOS Sequoia (15), `riscv-tools` will be installed from precompiled binaries. If you do not have Sequoia, `riscv-tools` will be built from source. Note building from source will require approximately 6.5 GB for all of the source and intermediate build files. It builds with the default compiler (clang), but you can specify another compiler on the command line. For example:
 
-    $ brew install --cc=gcc-10 riscv-tools
+    $ brew install --cc=gcc-15 riscv-tools
 
 Due to high number of dependences the RISC-V version of OpenOCD is not installed by default. If needed, it can be installed with:
 
