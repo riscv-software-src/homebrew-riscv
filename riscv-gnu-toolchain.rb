@@ -50,12 +50,6 @@ class RiscvGnuToolchain < Formula
   depends_on "mpfr"
   depends_on "zstd"
 
-  # patch zlib to compile on newer macOS. remove when zlib >= 1.3.1
-  def patch
-    system "git", "submodule", "update", "--depth", "1", "--init", "--recursive", "binutils"
-    system "patch", "-p1", "-i", Pathname(__dir__) / "zlib-fix.patch"
-  end
-
   def install
     # disable crazy flag additions
     ENV.delete "CPATH"
@@ -70,12 +64,6 @@ class RiscvGnuToolchain < Formula
       "--disable-gdb"
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
-
-    # Workaround for M1
-    # See https://github.com/riscv/homebrew-riscv/issues/47
-    # 2024-01-11 Commenting out because no longer needed?
-    # system "sed", "-i", ".bak", "s/.*=host-darwin.o$//", "gcc/gcc/config.host"
-    # system "sed", "-i", ".bak", "s/.* x-darwin.$//", "gcc/gcc/config.host"
 
     system "./configure", *args
     system "gmake"
