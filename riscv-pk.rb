@@ -6,9 +6,9 @@ class RiscvPk < Formula
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
-    rebuild 17
-    sha256 cellar: :any_skip_relocation, sonoma: "f5b94eebf17b92cb3f91d3f7f9ae1b7c1d78fcf93a33791de3e9b3bac11edecb"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "52de5cbc3eb258ae290d602cd85d2a868c94d5130a62304481c05fb15076f9c4"
+    rebuild 18
+    sha256 cellar: :any_skip_relocation, sequoia: "86d01def81622cf8814379dcc75df160bb25d1f142ce656c858b8739464daf0f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cb044e0bb08c99b0f7483d5e934f99117e9281497e21a1eb3c05cc57aa6e99a3"
   end
 
   depends_on "gnu-sed" => :build
