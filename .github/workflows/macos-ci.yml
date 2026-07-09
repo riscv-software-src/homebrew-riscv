@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - name: initial checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: cache Homebrew cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: /Users/runner/Library/Caches/Homebrew
         key: ${{ runner.os }}-sbt-${{ hashFiles('*.rb') }}
@@ -24,7 +24,9 @@ jobs:
     - name: brew update
       run: brew update
     - name: tap riscv
-      run: brew tap riscv/riscv
+      run: brew tap riscv-software-src/riscv
+    - name: trust riscv
+      run: brew trust riscv-software-src/riscv
     - name: install tools
       run: brew install riscv-tools
     - name: test
