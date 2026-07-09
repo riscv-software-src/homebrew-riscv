@@ -14,6 +14,7 @@ First, install homebrew:
 Get this tap:
 
     $ brew tap riscv-software-src/riscv
+    $ brew trust riscv-software-src/riscv
 
 Build the toolchain:
 
@@ -54,14 +55,4 @@ By default the toolchain will enable multilib with support for 32 bit targets. T
 
 Troubleshooting
 ---------------
-To support organizational changes, we have had to make the following two naming changes which may cause issues for existing users. It can often be simplest to remove everything (uninstall with `brew remove`, and untap with `brew untap riscv/riscv`) and then to re-install (directions up top). 
-
-* `riscv` -> `riscv-software-src` (for organization) - As long as GitHub continues to redirect the URL, this has not caused problems.
-* `master` -> `main` (for default branch name) - GitHub's branch redirection can be problematic. If you don't want to reinstall, you may be able to fix your tap with the following:
-```
-$> cd `brew --repository`/Library/Taps/riscv-software-src/homebrew-riscv
-$> git branch -m master main
-$> git fetch origin
-$> git branch -u origin/main main
-$> git remote set-head origin -a
-```
+The use of `trust` is now required since this is a 3rd party tap due to an [update from brew](https://docs.brew.sh/Tap-Trust).
