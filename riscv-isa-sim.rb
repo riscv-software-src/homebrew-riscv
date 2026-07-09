@@ -6,9 +6,9 @@ class RiscvIsaSim < Formula
 
   bottle do
     root_url "http://riscv.org.s3.amazonaws.com/bottles"
-    rebuild 20
-    sha256 cellar: :any, sequoia: "d9ba120b5897e20387fc12582325cb382791ca8faa998fc3e84c578262d2efa3"
-    sha256 cellar: :any, arm64_sequoia: "8003c09452d5c29800de12e274c19fdf10cc4dde407da477e8c23c059f3c0107"
+    rebuild 21
+    sha256 cellar: :any, sequoia: "9664e9c8307c1734e406a7ea9373d8d6df2453c0b24ced3b6be4284c7b8f66e5"
+    sha256 cellar: :any, arm64_sequoia: "6400dbf446a68666afdd532b0d04f7b5164ae27e9bcce40a1ed78adbc029a553"
   end
 
   depends_on "dtc"
@@ -20,7 +20,7 @@ class RiscvIsaSim < Formula
     mkdir "build"
     cd "build" do
       args = [
-        "--prefix=#{prefix}", "--with-target=../../riscv-pk/main/riscv64-unknown-elf"
+        "--prefix=#{prefix}", "--with-target=Cellar/riscv-pk/main/riscv64-unknown-elf"
       ]
       if build.with? "boost"
         # This seems to be needed at least on macos/arm64
